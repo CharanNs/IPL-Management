@@ -1,0 +1,883 @@
+#include<iostream>
+#include<conio.h>
+#include<string.h>
+#include<fstream>
+#include<stdlib.h>
+#include<stdlib.h>
+using namespace std;
+class IPL
+{
+	public:
+		void admin();
+		void start();
+		void ipl_choose();
+		void user();
+		void teams();
+		void view_players();
+		void new_players();
+		void matches();
+		void add();
+		void user1();
+		void display();
+		};
+    void IPL :: start(void)
+    {
+    	system("color FC");
+    cout<<"\n\n\n\n\t\t\t\t\t\t\t\t\tchoose what you are:\n\t\t\t\t\t\t\t\t\t1.admin\n\t\t\t\t\t\t\t\t\t2.user\n\t\t\t\t\t\t\t\t\t3.exit ";
+	int u;
+	cout<<"\n\t\t\t\t\t\t\t\t\tenter your choice:";
+	cin>>u;
+	switch(u)
+	{
+		case 1:
+			admin();
+			break;
+		case 2:
+			user();
+			break;
+		case 3:
+			exit (0);
+	}	
+	}
+	void IPL :: admin(void)
+	{
+	
+		cout<<"\n\n\n\n\t\t\t\t\t\t\t\t\t1.continue as admin\n\t\t\t\t\t\t\t\t\t2.back to main menu\n\t\t\t\t\t\t\t\t\t3.exit";
+		int z;
+		cout<<"\n\t\t\t\t\t\t\t\t\tplease enter your choice::";
+		cin>>z;
+		switch (z)
+		{
+	case 1:
+		{
+		system("cls");
+		cout<<"\n\t\t\t\t\t\t\t\t\tplease enter the password::";
+		fflush(stdin);
+		char pwd[5];
+		int i=0;
+		while(i<5)
+		{
+			pwd[i]=getch();
+			cout<<"*";
+			++i;
+		}
+		if (strcmp(pwd,"00000")==0)
+		{
+			system("cls");
+			cout<<"\n\t\t\t\t\t\t\t\t\t*****welcome*****\n";
+			ipl_choose();
+		}
+		else
+		{
+			cout<<"\n\t\t\t\t\t\t\t\t\twrong try again";
+			admin();
+		}}
+		break;
+	case 2:
+		{
+			start();
+			break;
+		}
+		case 3:
+			exit(0);
+			break;
+	default:
+		{
+			cout<<"\n\t\t\t\t\t\t\t\t\tplease enter the correct option";
+			admin();
+		}
+		}
+	}
+	void IPL :: user(void)
+	{
+		cout<<"\n\t\t\t\t\t\t\t\t\twelcome user";
+	    user1();
+		
+	}
+	void IPL :: ipl_choose(void)
+	{
+		
+		cout<<"\t\t\t\t\t\t\t\t\tchoose what u want to do\n";
+		cout<<"\t\t\t\t\t\t\t\t\t1.Adding\n\t\t\t\t\t\t\t\t\t2.display\n\t\t\t\t\t\t\t\t\t3.back to main menu\n\t\t\t\t\t\t\t\t\t4.exit";
+		int y;
+		cout<<"\n\t\t\t\t\t\t\t\t\tenter your choice::";
+		cin>>y;	
+		switch(y)
+		{
+		case 1:
+			{
+				system("cls");
+			add();
+			break;
+		    }
+		case 2:
+		    {
+		    	system("cls");
+		    	display();
+		    	break;
+			} 
+		case 3:
+			{
+				system("cls");
+				start();
+			}
+		case 4:
+			{
+				system("cls");
+				exit(0);
+			}
+		default:
+			{
+			cout<<"\n\t\t\t\t\t\t\t\t\tplease enter the correct option";
+			ipl_choose();	
+			}
+        }
+	}
+	
+	void IPL :: new_players()
+ {
+ 	char data[20][30];
+ 	int z,e,y,v=1;
+ 	fstream teams;
+ 	cout<<"\n\n\t\t\t\t\t\t\t\t\tSelect the Team in which you want to add new players \n\t\t\t\t\t\t\t\t\t\t\t1.MI\n\t\t\t\t\t\t\t\t\t\t\t2.CSK\n\t\t\t\t\t\t\t\t\t\t\t3.RCB\n\t\t\t\t\t\t\t\t\t\t\t4.DD\n\t\t\t\t\t\t\t\t\t\t\t5.RR\n\t\t\t\t\t\t\t\t\t\t\t6.KKR\n\t\t\t\t\t\t\t\t\t\t\t7.SRH\n\t\t\t\t\t\t\t\t\t\t\t8.KXIP";
+ 	cout<<"\n\n\t\t\t\t\t\t\t\t\tplease enter your choice::";
+	cin>>y;
+ 	switch(y)
+ 	{
+ 		case 1:
+ 			system("cls");
+ 			cout<<"\n\n\t\t\t\t\t\t\t\t\tMumbai Indians";
+ 			teams.open("MI",ios :: app);
+ 			teams.seekg(0,ios :: end);
+ 			teams.seekp(0,ios :: end);
+			cout<<"\n\n\t\t\t\t\t\t\t\t\tEnter the number of new team players :";
+			cin>>e;
+			cout<<"\n\n\t\t\t\t\t\t\t\t\tEnter details of the Players :"<<endl;
+			for(z=0;z<e;z++)
+ 			{
+ 			cout<<"\n\t\t\t\t\t\t\t\t\t"<<v<<".";
+ 			cin.ignore();
+			cin.getline(data[z],30);
+			teams<<"\n\t\t\t\t\t\t\t\t\t"<<v<<"."<<data[z];
+			v++;	
+			}	
+			cout<<"\n\n\t\t\t\t\t\t\t\t\tPlayers are added into Team successfully.\n\n\n";
+			teams.close();
+ 			ipl_choose();
+ 		case 2:
+ 			system("cls");
+ 			cout<<"\n\n\t\t\t\t\t\t\t\t\tChennai Super Kings";
+ 			teams.open("CSK",ios :: app);
+ 			teams.seekg(0,ios :: end);
+ 			teams.seekp(0,ios :: end);
+			cout<<"\n\n\t\t\t\t\t\t\t\t\tEnter the number of new team players :";
+			cin>>e;
+			cout<<"\n\n\t\t\t\t\t\t\t\t\tEnter details of the Players :"<<endl;
+			for(z=0;z<e;z++)
+ 			{
+ 				cout<<"\n\t\t\t\t\t\t\t\t\t:"<<v<<".";
+ 			cin.ignore();
+			cin.getline(data[z],30);
+			teams<<"\n\t\t\t\t\t\t\t\t\t"<<v<<"."<<data[z];
+			v++;	
+			}	
+			cout<<"\n\n\t\t\t\t\t\t\t\t\tPlayers are added into Team successfully.\n\n\n";
+			teams.close();
+ 			ipl_choose();
+ 		case 3:
+ 			system("cls");
+ 			cout<<"\n\n\t\t\t\t\t\t\t\t\tRoyal Challengers Bangalore";
+ 			teams.open("RCB",ios :: app);
+ 			teams.seekg(0,ios :: end);
+ 			teams.seekp(0,ios :: end);
+			cout<<"\n\n\t\t\t\t\t\t\t\t\tEnter the number of new team players :";
+			cin>>e;
+			cout<<"\n\n\t\t\t\t\t\t\t\t\tEnter details of the Players :"<<endl;
+			for(z=0;z<e;z++)
+ 			{
+ 			cout<<"\n\t\t\t\t\t\t\t\t\t:"<<v;
+ 			cin.ignore();
+			cin.getline(data[z],30);
+			teams<<"\n\t\t\t\t\t\t\t\t\t"<<v<<"."<<data[z];
+			v++;	
+			}	
+			cout<<"\n\n\t\t\t\t\t\t\t\t\tPlayers are added into Team successfully.\n\n\n";
+			teams.close();
+ 			ipl_choose();
+ 		case 4:
+ 			system("cls");
+ 			cout<<"\n\n\t\t\t\t\t\t\t\t\tDelhi Daredevils";
+ 			teams.open("DD",ios :: app);
+ 			teams.seekg(0,ios :: end);
+ 			teams.seekp(0,ios :: end);
+			cout<<"\n\n\t\t\t\t\t\t\t\t\tEnter the number of new team players :";
+			cin>>e;
+			cout<<"\n\n\t\t\t\t\t\t\t\t\tEnter details of the Players :"<<endl;
+			for(z=0;z<e;z++)
+ 			{
+ 				cout<<"\n\t\t\t\t\t\t\t\t\t:"<<v<<".";
+ 			cin.ignore();
+			cin.getline(data[z],30);
+			teams<<"\n\t\t\t\t\t\t\t\t\t"<<v<<"."<<data[z];
+			v++;	
+			}	
+			cout<<"\n\n\t\t\t\t\t\t\t\t\tPlayers are added into Team successfully.\n\n\n";
+			teams.close();
+ 			ipl_choose();
+ 		case 5:
+ 			system("cls");
+ 			cout<<"\n\n\t\t\t\t\t\t\t\t\tRajasthan Royals";
+ 			teams.open("RR",ios :: app);
+ 			teams.seekg(0,ios :: end);
+ 			teams.seekp(0,ios :: end);
+			cout<<"\n\n\t\t\t\t\t\t\t\t\tEnter the number of new team players :";
+			cin>>e;
+			cout<<"\n\n\t\t\t\t\t\t\t\t\tEnter details of the Players:"<<endl;
+			for(z=0;z<e;z++)
+ 			{
+ 				cout<<"\n\t\t\t\t\t\t\t\t\t:"<<v<<".";
+ 			cin.ignore();
+			cin.getline(data[z],30);
+			teams<<"\n\t\t\t\t\t\t\t\t\t"<<v<<"."<<data[z];
+			v++;	
+			}	
+			cout<<"\n\n\t\t\t\t\t\t\t\t\tPlayers are added into Team successfully.\n\n\n";
+			teams.close();
+ 			ipl_choose();
+ 		case 6:
+ 			system("cls");
+ 			cout<<"\n\n\t\t\t\t\t\t\t\t\tKolkata Knight Riders";
+ 			teams.open("KKR",ios :: app);
+ 			teams.seekg(0,ios :: end);
+ 			teams.seekp(0,ios :: end);
+			cout<<"\nEnter the number of new team players :";
+			cin>>e;
+			cout<<"\n\n\t\t\t\t\t\t\t\t\tEnter details of the Players :"<<endl;
+			for(z=0;z<e;z++)
+ 			{
+ 				cout<<"\n\t\t\t\t\t\t\t\t\t:"<<v<<".";
+ 			cin.ignore();
+			cin.getline(data[z],30);
+			teams<<"\n\t\t\t\t\t\t\t\t\t"<<v<<"."<<data[z];
+			v++;	
+			}	
+			cout<<"\n\n\t\t\t\t\t\t\t\t\tPlayers are added into Team successfully.\n\n\n";
+			teams.close();
+ 			ipl_choose();
+ 		case 7:
+ 			system("cls");
+ 			cout<<"\nSunrisers Hyderabad";
+ 			teams.open("SRH",ios :: app);
+ 			teams.seekg(0,ios :: end);
+ 			teams.seekp(0,ios :: end);
+			cout<<"\nEnter the number of new team players :";
+			cin>>e;
+			cout<<"\n\n\t\t\t\t\t\t\t\t\tEnter details of the Players :"<<endl;
+			for(z=0;z<e;z++)
+ 			{
+ 				cout<<"\n\t\t\t\t\t\t\t\t\t:"<<v<<".";
+ 			cin.ignore();
+			cin.getline(data[z],30);
+			teams<<"\n\t\t\t\t\t\t\t\t\t"<<v<<"."<<data[z];
+			v++;	
+			}	
+			cout<<"\n\n\t\t\t\t\t\t\t\t\tPlayers are added into Team successfully.\n\n\n";
+			teams.close();
+ 			ipl_choose();
+ 		case 8:
+ 			system("cls");
+ 			cout<<"\nKings XI Punjab";
+ 			teams.open("KXIP.txt",ios :: app);
+ 			teams.seekg(0,ios :: end);
+ 			teams.seekp(0,ios :: end);
+			cout<<"\n\n\t\t\t\t\t\t\t\t\tEnter the number of new team players :";
+			cin>>e;
+			cout<<"\n\n\t\t\t\t\t\t\t\t\tEnter details of the Players :"<<endl;
+			for(z=0;z<e;z++)
+ 			{
+ 				cout<<"\n\t\t\t\t\t\t\t\t\t:"<<v<<".";
+ 			cin.ignore();
+			cin.getline(data[z],30);
+			teams<<"\n\t\t\t\t\t\t\t\t\t"<<v<<"."<<data[z];
+			v++;	
+			}	
+			cout<<"\n\n\t\t\t\t\t\t\t\t\tPlayers are added into Team successfully.\n\n\n";
+			teams.close();
+ 			ipl_choose();
+    }
+ }
+	
+	void IPL :: add(void)
+	{
+	cout<<"\n\n\t\t\t\t\t\t\t\t\t1.teams and matches\n\n\t\t\t\t\t\t\t\t\t2.players\n\n\t\t\t\t\t\t\t\t\t3.exit";
+    int d;
+    int a,i,n=1,k=0,o=1,date=1,month=4,year=2018;
+    cout<<"\n\t\t\t\t\t\t\t\t\tplease enter your choice::";
+	cin>>d;
+	switch(d)
+	{
+		case 1:
+			{
+			cout<<"\n\t\t\t\t\t\t\t\t\thow many teams going to participate::";
+		    cin>>a;
+		    if (a==1)
+		    {
+		    	cout<<"\n\t\t\t\t\t\t\t\t\t***-->one team is not allowed to play this ipl<--***";
+		    	add();
+		    }
+		    else
+		    {
+			cout<<"\n\n\t\t\t\t\t\t\t\t\tenter the team names\n";
+			char names[20][100];
+			ofstream outfile("Ipl");
+	        outfile<<"\n\t\t\t\t\t\t\t\t\tipl teams are:\n";
+	        for(int i=0;i<a;i++)
+	        {
+			    cout<<"\n\t\t\t\t\t\t\t\t"<<i+1<<".";
+			    cin.ignore();
+			    cin.getline(names[i],100);
+			    outfile<<i+1<<"."<<"\n\t\t\t\t\t\t\t\t"<<names[i]<<endl;			
+		    }
+		        cout<<"\n\t\t\t\t\t\t\t\t\tIpl matches are\n\n\n";
+		        cout<<"\t\t\t\t\t\t\t\tMATCHES\t\t\t\t\tTIME\t\t\t\t  DATE";
+	  	        outfile<<"\n\t\t\t\t\t\t\t\t\tipl matches are\n";
+                for(k=0,n=1;k<a,n<a;k++,n++)
+	            {
+	                for(int i=0;i<a;i++)
+	    	   		 {
+				     if(n+i>=a || k>n+i )
+	    	    	{
+	    			  break;
+				     }
+					else 
+						{
+							if(k%2==1)
+							{
+								
+	              		cout<<"\n\t\t\t\t\t\t\t\t"<<o<<"."<<names[k]<<"_vs_"<<names[n+i]<<"\t\t\tmatch_stats_at_2_PM_IST_ON\t\t"<<date<<"/"<<month<<"/"<<year<<endl;
+		          		outfile<<o<<"."<<names[k]<<"_vs_"<<names[n+i]<<"\t\t\tmatch_starts_at_2_PM\t\t"<<date<<"/"<<month<<"/"<<year<<endl;
+		    	         o++;
+		    	         date++;
+		    	         if(date>31)
+								{
+									date=1;
+									month=5;
+								}
+		    	           }
+		    	           else
+		    	           {
+		    	           	cout<<"\n\t\t\t\t\t\t\t\t"<<o<<"."<<names[k]<<"_vs_"<<names[n+i]<<"\t\t\tmatch_starts_at_8_PM_IST_ON\t\t"<<date<<"/"<<month<<"/"<<year<<endl;
+		          		    outfile<<o<<"."<<names[k]<<"_vs_"<<names[n+i]<<"\t\t\tmatch_stats_at_8_PM_IST\t\t"<<date<<"/"<<month<<"/"<<year<<endl;
+		    	            o++;
+		    	            date++;
+		    	            if(date>31)
+								{
+									date=1;
+									month=5;
+								}
+						   }
+					    }
+					}
+	            }
+	            for(k=0,n=1;k<a,n<a;k++,n++)
+	            {
+	                for(int i=0;i<a;i++)
+	    	   		 {
+				     if(n+i>=a || k>n+i )
+	    	    	{
+	    			  break;
+				     }
+					else 
+						{
+							if(k%2==1)
+							{
+								
+	              		cout<<"\n\t\t\t\t\t\t\t\t"<<o<<"."<<names[k]<<"_vs_"<<names[n+i]<<"\t\t\tmatch_stats_at_2_PM_IST_ON\t\t"<<date<<"/"<<month<<"/"<<year<<endl;
+		          		outfile<<o<<"."<<names[k]<<"_vs_"<<names[n+i]<<"\t\t\tmatch_starts_at_2_PM\t\t"<<date<<"/"<<month<<"/"<<year<<endl;
+		    	         o++;
+		    	         date++;
+		    	         if(date>31)
+								{
+									date=1;
+									month=5;
+								}
+		    	           }
+		    	           else
+		    	           {
+		    	           	cout<<"\n\t\t\t\t\t\t\t\t"<<o<<"."<<names[k]<<"_vs_"<<names[n+i]<<"\t\t\tmatch_starts_at_8_PM_IST_ON\t\t"<<date<<"/"<<month<<"/"<<year<<endl;
+		          		    outfile<<o<<"."<<names[k]<<"_vs_"<<names[n+i]<<"\t\t\tmatch_stats_at_8_PM_IST\t\t"<<date<<"/"<<month<<"/"<<year<<endl;
+		    	            o++;
+		    	            date++;
+		    	            if(date>31)
+								{
+									date=1;
+									month=5;
+								}
+						   }
+					    }
+					}
+	            }
+				outfile.close();
+				}}
+			ipl_choose();
+			case 2:
+				system("cls");
+				new_players();
+				ipl_choose();
+			case 3:
+				system("cls");
+				exit(0);
+			default:
+				cout<<"please enter the correct option";
+				ipl_choose();
+	}
+    }
+    void IPL :: view_players()
+ {
+ 	fstream view;
+ 	int g;
+ 	char view1[1000];
+ 	char view2[1000];
+ 	char view3[1000];
+ 	char view4[1000];
+ 	char view5[1000];
+ 	char view6[1000];
+ 	char view7[1000];
+ 	char view8[1000];
+ 	cout<<"\n\n\t\t\t\t\t\t\t\t\tChoose the Team for Which Team Players you want to view\n\t\t\t\t1.MI\n\t\t\t\t2.CSK\n\t\t\t\t3.RCB\n\t\t\t\t4.KKR\n\t\t\t\t5.\t\t\t\tDD\n\t\t\t\t6.RR\n\t\t\t\t7.SRH\n\t\t\t\t8.KXIP";
+	cin>>g;
+	switch(g)
+	{
+		case 1:
+			system("cls");
+			cout<<"\n\n\t\t\t\t\t\t\t\t\tMUMBAI INDIANS"<<endl;
+			view.open("MI");
+			if(!view)
+			{
+			cout<<"\t\t\t\tError in opening file..!!";
+			getch();
+			exit(0);
+			}
+			while(view.eof()==0)
+  		    {
+   	        view>>view1;
+			cout<<view1<<" "<<endl;
+    		}
+			cout<<"\n";
+			view.close();
+			user();	
+		case 2:
+			system("cls");
+		    cout<<"\n\n\t\t\t\t\t\t\t\t\tCHENNAI SUPER KINGS"<<endl;
+			view.open("CSK");
+			if(!view)
+			{
+			cout<<"\n\t\t\t\t\t\t\t\t\tError in opening file..!!";
+			getch();
+			exit(0);
+			}
+			while(view.eof()==0)
+  		    {
+   	         view>>view2;
+  			cout<<view2<<" "<<endl;
+    		}
+			cout<<"\n";
+			view.close();
+			user();
+		case 3:
+			system("cls");
+			cout<<"\n\n\t\t\t\t\t\t\t\t\tROYAL CHALLENGERS BANGALORE"<<endl;
+			view.open("RCB");
+			if(!view)
+			{
+			cout<<"\n\t\t\t\t\t\t\t\t\tError in opening file..!!";
+			getch();
+			exit(0);
+			}
+			while(view.eof()==0)
+  		    {
+   	         view>>view3;
+  			cout<<view3<<" "<<endl;
+    		}
+			cout<<"\n";
+			view.close();
+			user();
+		case 4:
+			system("cls");
+		    cout<<"\n\n\t\t\t\t\t\t\t\t\tKOLKATA KNIGHT RIDERS"<<endl;
+			view.open("KKR");
+			if(!view)
+			{
+			cout<<"\n\t\t\t\t\t\t\t\t\tError in opening file..!!";
+			getch();
+			exit(0);
+			}
+			while(view.eof()==0)
+  		    {
+   	         view>>view4;
+  			cout<<view4<<" "<<endl;
+    		}
+			cout<<"\n";
+			view.close();
+		    user();
+		case 5:
+			system("cls");
+			cout<<"\n\n\t\t\t\t\t\t\t\t\tDELHI DAREDEVILS"<<endl;
+			view.open("DD");
+			if(!view)
+			{
+			cout<<"Error in opening file..!!";
+			getch();
+			exit(0);
+			}
+			while(view.eof()==0)
+  		    {
+   	         view>>view5;
+  			cout<<view5<<" "<<endl;
+    		}
+			cout<<"\n";
+			view.close();			
+			user();
+		case 6:
+			system("cls");
+			cout<<"\n\n\t\t\t\t\t\t\t\t\tRAJASTHAN ROYALS"<<endl;
+			view.open("RR");
+			if(!view)
+			{
+			cout<<"\n\t\t\t\t\t\t\t\t\tError in opening file..!!";
+			getch();
+			exit(0);
+			}
+			while(view.eof()==0)
+  		    {
+   	         view>>view6;
+  			cout<<view6<<" "<<endl;
+    		}
+			cout<<"\n";
+			view.close();			
+			user();
+		case 7:
+			system("cls");
+			cout<<"\n\n\t\t\t\t\t\t\t\t\tSUNRISERS HYDERABAD"<<endl;
+			view.open("SRH");
+			if(!view)
+			{
+			cout<<"\n\t\t\t\t\t\t\t\t\tError in opening file..!!";
+			getch();
+			exit(0);
+			}
+			while(view.eof()==0)
+  		    {
+   	         view>>view7;
+  			cout<<view7<<" "<<endl;
+    		}
+			cout<<"\n";
+			view.close();
+    		user();
+		case 8:
+			system("cls");
+			cout<<"\n\n\t\t\t\t\t\t\t\t\tKINGS XI PUNJAB"<<endl;
+			view.open("KXIP");
+			if(!view)
+			{
+			cout<<"\n\t\t\t\t\t\t\t\t\tError in opening file..!!";
+			getch();
+			exit(0);
+			}
+			while(view.eof()==0)
+  		    {
+   	         view>>view8;
+  			cout<<view8<<" "<<endl;
+    		}
+			cout<<"\n";
+			view.close();
+			user();
+		default:
+			user();
+	}
+ user();
+ }	
+ void IPL :: user1(void)
+{
+	char data[10000];
+	ifstream infile;
+	infile.open("IPL");	
+	cout<<"\n\n\t\t\t\t\t\t\t\t\tChoose what you want to do ::";
+	cout<<"\n\t\t\t\t\t\t\t\t\t1.View Teams and Schedule\n\t\t\t\t\t\t\t\t\t2.View Team Players\n\t\t\t\t\t\t\t\t\t3.EMERGING PLAYER\n\t\t\t\t\t\t\t\t\t4.Most Valuable Player\n\t\t\t\t\t\t\t\t\t5.Most runs\n\t\t\t\t\t\t\t\t\t6.most centuries \n\t\t\t\t\t\t\t\t\t7.Orange and Purple Cap Holders\n\t\t\t\t\t\t\t\t\t8.best_bowling_performence\n\t\t\t\t\t\t\t\t\t9.Lowest scores defended\n\t\t\t\t\t\t\t\t\t10.View Tournament Winner.\n\t\t\t\t\t\t\t\t\t11.Man Of The Match and Man Of The Series\n\t\t\t\t\t\t\t\t\t12.View Previous Tournaments Winners\n\t\t\t\t\t\t\t\t\t13.go to main menu\n\t\t\t\t\t\t\t\t\t14.exit;";
+	int e,g;
+	cout<<"\n\t\t\t\t\t\t\t\t\tplease enter your choice::";
+	cin>>e;
+	switch(e)
+	{
+		case 1:
+			system("cls");
+			cout<<"\n\n\n\t\t\t\t\t\t\t\t\tThe Teams and The Schedule of the Matches will be as follows"<<endl;
+			if(!infile)
+			{
+			cout<<"\t\t\t\t\t\t\t\t\tError in opening file..!!";
+			getch();
+			exit(0);
+			}
+			while(infile.eof()==0)
+  		    {
+   		     infile>>data;
+  	         cout<<data<<"\n";
+    		}
+			cout<<"\n";
+			infile.close();
+			user();
+		case 2:
+			system("cls");
+		    view_players();		    
+		case 3:
+			system("cls");
+		    cout<<"\n\n\t\t\t\t\t\t\t\t\t  emerging player is BASIL_THAMPI of team gujarat_lios\n\n";
+			user();
+		case 4:
+			system("cls");
+			cout<<"\n\n\t\t\t\t\t\t\t\t\t Most Valuable Player    :- Sunil Narine of team KOLKATA KNIGHT RIDERS"<<endl;
+			user();
+		case 5:
+			system("cls");
+			cout<<"\n\n\n\t\t\t\t\t\t\t\t\t Most runs by any player   :- SURESH RAINA  of team CSK with  4540 RUNS"<<endl;
+			user();
+		case 6:
+			system("cls");
+			cout<<"\n\n \t\t\t\t\t\t\t\t\tMost Centuries    :- chris_gayle with 5 centuries of team royal_challengers_bengaluru"<<endl;
+			user();
+		case 7:
+			system("cls");
+		    cout<<"\n \t\t\t\t\t\t\t\t\tOrange Cap Holder    :-  DAVID WARNER of Team SUNRISERS HYDERABAD"<<endl;
+			cout<<"\n \t\t\t\t\t\t\t\t\tPurple Cap Holder    :-  BHUVANESHWAR KUMAR of Team SUNRISERS HYDERABAD\n"<<endl;
+			user();
+		case 8:
+			system("cls");
+			cout<<"\n\t\t\t\t\t\t\t\t\t Highest Scorer of the Tournament   :-  sohail_thakur of tema rajathan_royals with 6/14\n\n";
+			user();
+		case 9:
+			system("cls");
+			cout<<"\n\t\t\t\t\t\t\t\t\tlowest_score_defended    :- chenniah_super_kings, With 98/8 against kxip\n\n";
+			user();
+		case 10:
+			system("cls");
+			cout<<"\n \t\t\t\t\t\t\t\t\tTournament Winner    :-   MUMBAI INDIANS\n\n";
+			user();
+		case 11:
+			system("cls");
+			cout<<"\n \t\t\t\t\t\t\t\t\tTournament Winner    :-   MUMBAI INDIANS\n\n";
+			cout<<"\n\t\t\t\t\t\t\t\t\t MAN OF THE MATCH(finals)     :-  KRUNAL PANDYA of Team MUMBAI INDIANS\n MAN OF THE SERIES         :-  ROHIT SHARMA of Team MUMBAI INDIANS\n\n";
+			user();
+		case 12:
+			system("cls");
+			cout<<"\n \t\t\t\t\t\t\t\t\tPrevious Tournaments Winners   :\n 2008-Rajasthan Royals (RR)\n 2009-Deccan Chargers (DC)\n 2010-Chennai Super Kings (CSK)\n 2011-Chennai Super Kings (CSK)\n 2012-Kolkata Knight Riders (KKR)\n 2013-Mumbai Indians (MI)\n 2014-Kolkata Knight Riders (KKR)\n 2015-Mumbai Indians (MI)\n 2016-Sunrisers Hyderabad (SRH)\n 2017-Mumbai Indians (MI)\n\n";
+			user();
+		case 13:
+			system("cls");
+			start();
+		case 14:
+			system("cls");
+			cout<<"\n\n                                                                                                      THANK YOU\n\n";
+            exit(0);
+		default:
+			user();
+}	}
+void IPL :: display(void)
+{
+	char data[10000];
+	ifstream infile;
+	infile.open("IPL");	
+	cout<<"\n\t\t\t\t\t\t\t\t\tChoose what you want to do\n\n :";
+	cout<<"\n\t\t\t\t\t\t\t\t\t1.View Teams and Schedule\n\t\t\t\t\t\t\t\t\t2.players";
+	int e,g;
+	cin>>e;
+	switch(e)
+	{
+		case 1:
+			system("cls");
+			cout<<"\n\n\n\t\t\t\t\t\t\t\t\tThe Teams and The Schedule of the Matches will be as follows"<<endl;
+			if(!infile)
+			{
+			cout<<"Error in opening file..!!";
+			getch();
+			exit(0);
+			}
+			while(infile.eof()==0)
+  		    {
+   		     infile>>data;
+  	         cout<<data<<endl;
+  	         fflush(stdin);
+    		}
+			infile.close();
+			ipl_choose();
+			case 2:
+				{
+    fstream view;
+ 	int g;
+ 	char view1[1000];
+ 	char view2[1000];
+ 	char view3[1000];
+ 	char view4[1000];
+ 	char view5[1000];
+ 	char view6[1000];
+ 	char view7[1000];
+ 	char view8[1000];
+ 	cout<<"\n\n\t\t\t\t\t\t\t\t\tChoose the Team for Which Team Players you want to view\n\t\t\t\t1.MI\n\t\t\t\t2.CSK\n\t\t\t\t3.RCB\n\t\t\t\t4.KKR\n\t\t\t\t5.\t\t\t\tDD\n\t\t\t\t6.RR\n\t\t\t\t7.SRH\n\t\t\t\t8.KXIP";
+	cin>>g;
+	switch(g)
+	{
+		case 1:
+			system("cls");
+			cout<<"\n\n\t\t\t\t\t\t\t\t\tMUMBAI INDIANS"<<endl;
+			view.open("MI");
+			if(!view)
+			{
+			cout<<"\t\t\t\tError in opening file..!!";
+			getch();
+			exit(0);
+			}
+			while(view.eof()==0)
+  		    {
+   	        view>>view1;
+			cout<<view1<<" "<<endl;
+    		}
+			cout<<"\n";
+			view.close();
+			user();	
+		case 2:
+			system("cls");
+		    cout<<"\n\n\t\t\t\t\t\t\t\t\tCHENNAI SUPER KINGS"<<endl;
+			view.open("CSK");
+			if(!view)
+			{
+			cout<<"\n\t\t\t\t\t\t\t\t\tError in opening file..!!";
+			getch();
+			exit(0);
+			}
+			while(view.eof()==0)
+  		    {
+   	         view>>view2;
+  			cout<<view2<<" "<<endl;
+    		}
+			cout<<"\n";
+			view.close();
+			user();
+		case 3:
+			system("cls");
+			cout<<"\n\n\t\t\t\t\t\t\t\t\tROYAL CHALLENGERS BANGALORE"<<endl;
+			view.open("RCB");
+			if(!view)
+			{
+			cout<<"\n\t\t\t\t\t\t\t\t\tError in opening file..!!";
+			getch();
+			exit(0);
+			}
+			while(view.eof()==0)
+  		    {
+   	         view>>view3;
+  			cout<<view3<<" "<<endl;
+    		}
+			cout<<"\n";
+			view.close();
+			user();
+		case 4:
+			system("cls");
+		    cout<<"\n\n\t\t\t\t\t\t\t\t\tKOLKATA KNIGHT RIDERS"<<endl;
+			view.open("KKR");
+			if(!view)
+			{
+			cout<<"\n\t\t\t\t\t\t\t\t\tError in opening file..!!";
+			getch();
+			exit(0);
+			}
+			while(view.eof()==0)
+  		    {
+   	         view>>view4;
+  			cout<<view4<<" "<<endl;
+    		}
+			cout<<"\n";
+			view.close();
+		    user();
+		case 5:
+			system("cls");
+			cout<<"\n\n\t\t\t\t\t\t\t\t\tDELHI DAREDEVILS"<<endl;
+			view.open("DD");
+			if(!view)
+			{
+			cout<<"Error in opening file..!!";
+			getch();
+			exit(0);
+			}
+			while(view.eof()==0)
+  		    {
+   	         view>>view5;
+  			cout<<view5<<" "<<endl;
+    		}
+			cout<<"\n";
+			view.close();			
+			user();
+		case 6:
+			system("cls");
+			cout<<"\n\n\t\t\t\t\t\t\t\t\tRAJASTHAN ROYALS"<<endl;
+			view.open("RR");
+			if(!view)
+			{
+			cout<<"\n\t\t\t\t\t\t\t\t\tError in opening file..!!";
+			getch();
+			exit(0);
+			}
+			while(view.eof()==0)
+  		    {
+   	         view>>view6;
+  			cout<<view6<<" "<<endl;
+    		}
+			cout<<"\n";
+			view.close();			
+			user();
+		case 7:
+			system("cls");
+			cout<<"\n\n\t\t\t\t\t\t\t\t\tSUNRISERS HYDERABAD"<<endl;
+			view.open("SRH");
+			if(!view)
+			{
+			cout<<"\n\t\t\t\t\t\t\t\t\tError in opening file..!!";
+			getch();
+			exit(0);
+			}
+			while(view.eof()==0)
+  		    {
+   	         view>>view7;
+  			cout<<view7<<" "<<endl;
+    		}
+			cout<<"\n";
+			view.close();
+    		user();
+		case 8:
+			system("cls");
+			cout<<"\n\n\t\t\t\t\t\t\t\t\tKINGS XI PUNJAB"<<endl;
+			view.open("KXIP");
+			if(!view)
+			{
+			cout<<"\n\t\t\t\t\t\t\t\t\tError in opening file..!!";
+			getch();
+			exit(0);
+			}
+			while(view.eof()==0)
+  		    {
+   	         view>>view8;
+  			cout<<view8<<" "<<endl;
+    		}
+			cout<<"\n";
+			view.close();
+			user();
+		default:
+			user();
+	}
+ user();
+ }
+}}
+int main()
+{
+	cout<<"\t\t\t\t\t\t\t\t\t\t\t******welcome to IPL controller******";
+	IPL obj;
+	obj.start();
+}
